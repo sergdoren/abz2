@@ -1,0 +1,72 @@
+@import "../../../node_modules/bourbon/app/assets/stylesheets/bourbon"
+@import "../../variables"
+
+.menu-left
+  +size(212px null)
+  float: left
+
+
+/* nav-bar style*/
+.nav
+  padding-bottom: 18px
+  &__item
+    +size(100% 51px)
+    +border_bottom
+    +display(flex)
+    +align-items(center)
+    color: $c_nav_icon
+    +hover
+      .nav__item
+        color: $c_green
+      .nav__text
+        color: $c_green
+  &__icon
+    +size(24px 23px)
+    +transition(.3s)
+    font-size: 24px
+  &__text
+    color: $c_nav_text
+    padding-left: 25px
+    font-size: 16px
+    +transition(.3s)
+
+/* Advertisement */
+.advertisement
+  +border_bottom
+  padding-bottom: 18px
+  color: $c_advertisement
+  &__text
+    padding-bottom: 16px
+    color: $c_advertisement
+    font-size: 14px
+  &__img
+    +size(210px 300px)
+    display: block
+    overflow: hidden
+  &__small-text
+    display: block
+    color: $c_advert_small_text
+    font-size: 11px
+    padding-top: 6px
+    +hover()
+      color: $c_green
+
+/*Featured Companies*/
+.featured
+  +border_bottom
+  padding-bottom: 2px
+
+/* footer */
+.aside-footer
+  color: $c_aside_foot
+  font-size: 12px
+  &__cop
+    padding: 16px 0 14px
+  &__term
+    padding-right: 20px
+  a
+    +hover
+      color: $c_green
+
+
+

@@ -1,1 +1,96 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bourbon/app/assets/stylesheets/bourbon"
+@import "variables"
+@import "font/ProximaNova.css"
+@import "font/style.css"
+body
+  margin: 0
+  font-family: "Proxima Nova Regular", sans-serif
+  font-size: 15px
+  font-weight: 400
+
+*
+  box-sizing: border-box
+
+input
+  outline: none
+  border: none
+  color: inherit
+  font-size: inherit
+
+a
+  text-decoration: none
+  color: inherit
+
+button
+  outline: none
+  border: none
+  cursor: pointer
+
+.container
+  width: 1000px
+  //min-width: 1000px
+  //max-width: 1440px
+  margin: 0 auto
+  padding: 0 30px
+  +clearfix
+
+/* aside items */
+.side
+  font-weight: 400
+  &__head
+    padding: 17px 0 14px
+  &__h-text
+    color: $c_advertisement
+    font-size: 14px
+  &__all
+    float: right
+    color: $c_hr_all
+    font-size: 14px
+    +hover
+      color: $c_green
+  &__item
+    padding-bottom: 20px
+    +clearfix
+  &__i-img
+    +size(80px)
+    padding-top: 2px
+    float: left
+    overflow: hidden
+    border-radius: 10px
+    +hover()
+      border-radius: 50%
+  &__i-info
+    +size(calc(100% - 80px) null)
+    float: left
+    padding-left: 10px
+  &__i-town
+    padding-top: 4px
+    color: $c_advertisement
+    font-size: 14px
+  &__i-town-p
+    padding-top: 7px
+    color: $c_advertisement
+    font-size: 14px
+  &__i-name,&__i-name-long
+    color: $c_hr_all
+    font-size: 16px
+    +hover()
+      color: $c_green
+  &__i-name-long
+    float: left
+    width: 100%
+    padding-bottom: 3px
+  &__i-type
+    padding-top: 3px
+    color: $c_advertisement
+    font-size: 14px
+  &__i-follow
+    display: block
+    padding-top: 4px
+    color: $c_hr_all
+    font-size: 12px
+    +hover
+      color: $c_green
+  &__i-desc
+    color: $c_advertisement
+    font-size: 14px

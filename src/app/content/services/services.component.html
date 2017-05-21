@@ -1,0 +1,14 @@
+<section class="services">
+  <div class="services__head">
+    <div class="services__title">Service Directory</div>
+    <button class="services__btn-add">Add New Service</button>
+  </div>
+  <div class="services__list">
+    <a  *ngFor="let service of services" href="/service/{{service.id}}" class="service">
+      <div class="service__icon">
+        <img class="service__icon-img" src="{{service.icon}}" alt="">
+      </div>
+      <div class="service__name">{{service.title}}</div>
+    </a>
+  </div>
+</section>

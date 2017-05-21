@@ -1,0 +1,74 @@
+@import "../../../node_modules/bourbon/app/assets/stylesheets/bourbon"
+@import "../../variables"
+
+header
+  +size(100% 68px)
+  background-color: $c_green
+  border-bottom: 2px solid $c_dark_green
+  padding: 11px 0 0
+  color: $c_white
+.container
+  +display(flex)
+
+
+.logo
+  +size(130px 40px)
+
+
+.search
+  +flex(1)
+  max-width: 476px
+  position: relative
+  padding: 6px 10px 0 31px
+  &__search-form
+    position: relative
+  &__input
+    +size(100% 34px)
+    padding-left: 37px
+    border-radius: 2px
+    background-color: $c_search
+    +placeholder()
+      color: $c_white
+      font-weight: 400
+      font-size: 15px
+    &:active,&:focus
+      background-color: $c_white
+      +placeholder()
+        color: $c_green
+  &__icon
+    +position(absolute, 9px 0 0 10px)
+    +size(16px)
+    font-size: 16px
+    color: $c_search_icon
+
+
+.icon
+  padding: 11px 12px 0 20px
+  &__btn
+    +size(26px)
+    cursor: pointer
+    margin-right: 17px
+    display: inline-block
+    font-size: 23px
+
+
+.user
+  +display(flex)
+  +align-items(center)
+  margin-top: 4px
+  cursor: pointer
+  &:hover
+    .user__avatar
+      border-radius: 50%
+  &__avatar
+    +size(32px)
+    overflow: hidden
+    +transition(.3s)
+  &__name
+    font-size: 16px
+    font-weight: 400
+    max-width: 200px
+    padding-left: 11px
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap

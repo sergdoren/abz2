@@ -1,0 +1,23 @@
+$c_green: #87b448
+$c_green_hover: #94c54f
+$c_dark_green: #71973c
+$c_search: #73993d
+$c_search_icon: #8ebc4d
+$c_white: white
+$c_grey_border: #e0e2e6
+$c_nav_icon: #c7cdd9
+$c_nav_text: #59606b
+$c_advertisement: #7c8695
+$c_advert_small_text: #d3d3d3
+$c_hr_all: #1c2534
+$c_aside_foot: #b7bfcd
+$c_service_hover: #f4f7fb
+
+=border_bottom()
+  border-bottom: 1px solid $c_grey_border
+
+=hover($tr: .3s)
+  +transition($tr)
+  &:hover
+    @content
+

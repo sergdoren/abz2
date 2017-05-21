@@ -1,0 +1,52 @@
+@import "../../../../node_modules/bourbon/app/assets/stylesheets/bourbon"
+@import "../../../variables"
+
+.services
+  padding: 0 15px 0 14px
+  &__head
+    padding: 12px 0px 17px
+    +clearfix
+  &__title
+    float: left
+    color: $c_hr_all
+    font-size: 29px
+  &__btn-add
+    +size(145px 30px)
+    float: right
+    color: $c_white
+    font-size: 14px
+    line-height: 30px
+    text-align: center
+    border-radius: 5px
+    background-color: $c_green
+    +hover
+      background-color: $c_green_hover
+  &__list
+    +size(100% null)
+    padding: 16px 4px
+    border-radius: 5px
+    border: 1px solid $c_grey_border
+    +display(flex)
+    +justify-content(space-around)
+    +flex-wrap(wrap)
+.service
+  +size(140px null)
+  display: block
+  margin-bottom: 30px
+  &:hover
+    .service__icon
+      background-color: $c_service_hover
+    .service__name
+      color: $c_dark_green
+  &__icon
+    +size(140px)
+    border: 1px solid $c_grey_border
+    +transition(.3s)
+  &__icon-img
+    width: 100%
+  &__name
+    color: $c_hr_all
+    padding: 13px 0 2px 0
+    text-align: center
+    font-size: 13px
+    +transition(.3s)
