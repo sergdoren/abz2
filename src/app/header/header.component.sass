@@ -13,11 +13,12 @@ header
 
 .logo
   +size(130px 40px)
+  display: block
 
 
 .search
   +flex(1)
-  max-width: 476px
+  //max-width: 476px
   position: relative
   padding: 6px 10px 0 31px
   &__search-form
@@ -29,9 +30,9 @@ header
     background-color: $c_search
     +placeholder()
       color: $c_white
-      font-weight: 400
       font-size: 15px
     &:active,&:focus
+      color: $c_hr_all
       background-color: $c_white
       +placeholder()
         color: $c_green
@@ -40,7 +41,8 @@ header
     +size(16px)
     font-size: 16px
     color: $c_search_icon
-
+  &__icon-path
+    fill: $c_green
 
 .icon
   padding: 11px 12px 0 20px
@@ -50,6 +52,13 @@ header
     margin-right: 17px
     display: inline-block
     font-size: 23px
+    +hover
+      .icon__btn-path
+        fill: $c_icon_head_hover
+  &__btn-path
+    fill: $c_white
+    +transition(.3s)
+
 
 
 .user
@@ -66,7 +75,6 @@ header
     +transition(.3s)
   &__name
     font-size: 16px
-    font-weight: 400
     max-width: 200px
     padding-left: 11px
     overflow: hidden

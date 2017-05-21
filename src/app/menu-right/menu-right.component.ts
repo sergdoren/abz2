@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdvertisementComponent } from '../shared-menu/advertisement/advertisement.component';
 
 @Component({
   selector: 'app-menu-right',

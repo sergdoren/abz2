@@ -9,6 +9,7 @@ import { MenuLeftComponent } from './menu-left/menu-left.component';
 import { MenuRightComponent } from './menu-right/menu-right.component';
 import { ContentComponent } from './content/content.component';
 import { ServicesComponent } from './content/services/services.component';
+import { AdvertisementComponent } from './shared-menu/advertisement/advertisement.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ServicesComponent } from './content/services/services.component';
     MenuLeftComponent,
     MenuRightComponent,
     ContentComponent,
-    ServicesComponent
+    ServicesComponent,
+    AdvertisementComponent
   ],
   imports: [
     BrowserModule,

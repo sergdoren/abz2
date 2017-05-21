@@ -8,48 +8,24 @@
 
 /* nav-bar style*/
 .nav
-  padding-bottom: 18px
   &__item
     +size(100% 51px)
     +border_bottom
     +display(flex)
     +align-items(center)
-    color: $c_nav_icon
-    +hover
-      .nav__item
-        color: $c_green
-      .nav__text
-        color: $c_green
-  &__icon
-    +size(24px 23px)
-    +transition(.3s)
-    font-size: 24px
-  &__text
     color: $c_nav_text
-    padding-left: 25px
-    font-size: 16px
-    +transition(.3s)
-
-/* Advertisement */
-.advertisement
-  +border_bottom
-  padding-bottom: 18px
-  color: $c_advertisement
-  &__text
-    padding-bottom: 16px
-    color: $c_advertisement
-    font-size: 14px
-  &__img
-    +size(210px 300px)
-    display: block
-    overflow: hidden
-  &__small-text
-    display: block
-    color: $c_advert_small_text
-    font-size: 11px
-    padding-top: 6px
-    +hover()
+    +hover(.1s)
       color: $c_green
+      .nav__icon-path
+        fill: $c_green
+  &__icon
+    +size(25px 24px)
+    font-size: 24px
+  &__icon-path
+    fill: $c_nav_icon
+  &__text
+    padding-left: 24px
+    font-size: 16px
 
 /*Featured Companies*/
 .featured

@@ -1,0 +1,23 @@
+@import "../../../../node_modules/bourbon/app/assets/stylesheets/bourbon"
+@import "../../../variables"
+
+/* Advertisement */
+.advertisement
+  +border_bottom
+  padding: 18px 0
+  color: $c_advertisement
+  &__text
+    padding-bottom: 16px
+    color: $c_advertisement
+    font-size: 14px
+  &__img
+    +size(210px 300px)
+    display: block
+    overflow: hidden
+  &__small-text
+    display: block
+    color: $c_advert_small_text
+    font-size: 11px
+    padding-top: 6px
+    +hover()
+      color: $c_green
