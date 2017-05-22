@@ -3,12 +3,19 @@
     <div class="services__title">Service Directory</div>
     <button class="services__btn-add">Add New Service</button>
   </div>
-  <div class="services__list">
-    <a  *ngFor="let service of services" href="/service/{{service.id}}" class="service">
+  <div class="services__list" *ngIf="!BShowErr" >
+    <a *ngFor="let service of services" href="/service/{{service.id}}" class="service">
       <div class="service__icon">
         <img class="service__icon-img" src="{{service.icon}}" alt="">
       </div>
       <div class="service__name">{{service.title}}</div>
     </a>
   </div>
+</section>
+<section class="error" *ngIf="BShowErr">
+  <div class="error__text">
+    <span class="error__status">ERROR {{ errStatus }}:</span>
+    <span class="error__status-text">{{ errStatusText }}</span>
+  </div>
+  <div class="error__close" (click)="close()">Close</div>
 </section>

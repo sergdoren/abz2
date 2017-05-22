@@ -10,17 +10,14 @@ header
 .container
   +display(flex)
 
-
 .logo
   +size(130px 40px)
   display: block
 
-
 .search
   +flex(1)
-  //max-width: 476px
   position: relative
-  padding: 6px 10px 0 31px
+  padding: 6px 30px 0 31px
   &__search-form
     position: relative
   &__input
@@ -45,7 +42,7 @@ header
     fill: $c_green
 
 .icon
-  padding: 11px 12px 0 20px
+  padding: 13px 11px 0 0
   &__btn
     +size(26px)
     cursor: pointer
@@ -59,12 +56,11 @@ header
     fill: $c_white
     +transition(.3s)
 
-
-
 .user
   +display(flex)
   +align-items(center)
   margin-top: 4px
+  padding-right: 9px
   cursor: pointer
   &:hover
     .user__avatar

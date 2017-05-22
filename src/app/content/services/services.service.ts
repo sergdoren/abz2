@@ -5,12 +5,11 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import {observableToBeFn} from "rxjs/testing/TestScheduler";
 
 @Injectable()
 export class ServicesService {
 
-  private services = ['asd','asd2','asd3'];
+  private services = [];
 
   private url = 'http://504080.com/api/v1/services/categories';
 
@@ -25,8 +24,7 @@ export class ServicesService {
 
     return this.http
       .get(this.url, options)
-      .toPromise()
-      .then(res => {let result = res.json().data;console.log(result);return result;})
+      .map((res) => res.json().data)
   }
 
 }

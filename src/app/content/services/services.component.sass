@@ -52,3 +52,29 @@
     text-align: center
     font-size: 13px
     +transition(.3s)
+
+.error
+  +position(fixed, 0 0 auto auto)
+  padding: 10px
+  margin: 0 auto
+  background-color: $c_hr_all
+  color: white
+  border-radius: 4px
+  font-size: 16px
+  &__close
+    +size(100px 30px)
+    line-height: 29px
+    background-color: $c_green
+    cursor: pointer
+    text-align: center
+    border-radius: 5px
+    display: inline-block
+    +hover
+      background-color: $c_green_hover
+  &__text
+    display: inline-block
+  &__status
+    color: red
+  &__status-text
+    padding-right: 20px
+

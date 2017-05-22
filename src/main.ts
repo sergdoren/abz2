@@ -6,6 +6,9 @@ import { environment } from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
+  this.base = '/abz/dist';
+}else{
+  this.base = '/';
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);

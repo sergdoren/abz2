@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from './services.service'
+import {isBoolean} from "util";
 
 @Component({
   selector: 'app-services',
@@ -10,15 +11,33 @@ import { ServicesService } from './services.service'
 
 export class ServicesComponent implements OnInit {
 
-  public services;
+  private services;
+  public BShowErr: boolean;
 
   constructor(private servicesData: ServicesService) {}
 
   ngOnInit() {
+    this.BShowErr= false;
     this.servicesData.getServices()
-      .then(data => {
-        this.services = data;
-      });
+      .subscribe(
+        (data) => this.services = data,
+        (err) => this.showError(err)
+      )
+
+  }
+
+
+  private errStatus: string;
+  private errStatusText: string;
+  showError(err){
+    this.BShowErr = true;
+    console.log(err.status);
+    this.errStatus = err.status;
+    this.errStatusText = err.statusText;
+  }
+
+  close(){
+    this.BShowErr = false;
   }
 
 }
