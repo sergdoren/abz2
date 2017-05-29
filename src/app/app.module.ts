@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Route } from '@angular/router';
 
@@ -16,7 +16,8 @@ import { MainComponent } from './main/main.component';
 
 const routers = [
   {path: '', component: SupportComponent},
-  {path: '**', redirectTo: ''}
+  {path: 'support', component: SupportComponent},
+  {path: '**', component: SupportComponent}
 ];
 
 @NgModule({
@@ -34,6 +35,7 @@ const routers = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     JsonpModule,
     RouterModule.forRoot(routers)

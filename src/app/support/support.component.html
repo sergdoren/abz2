@@ -1,0 +1,45 @@
+<form [formGroup]="FormSupport" novalidate (ngSubmit)="submit()">
+
+  <label>EnquiryType</label>
+  <select formControlName="EnquiryType" [(ngModel)]="EnquiryType">
+    <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+  </select>
+
+
+  <div class="error" *ngIf="
+      FormSupport.controls['EnquiryType'].invalid
+       && FormSupport.controls['EnquiryType'].touched
+  ">
+    err
+  </div>
+
+  <label>EnquiryTypeOther</label>
+  <input type="text" *ngIf="FormSupport.controls['EnquiryType'].value == 'Other'" formControlName="EnquiryTypeOther">
+  <div class="error" *ngIf="FormSupport.controls['EnquiryTypeOther'].invalid && FormSupport.controls['EnquiryTypeOther'].touched">err</div>
+
+  <label>Name</label>
+  <input type="text" formControlName="Name">
+  <div class="error" *ngIf="FormSupport.controls['Name'].invalid && FormSupport.controls['Name'].touched">err</div>
+
+  <label>Email</label>
+  <input type="text" formControlName="Email">
+  <div class="error" *ngIf="FormSupport.controls['Email'].invalid && FormSupport.controls['Email'].touched">err</div>
+
+  <label>Subject</label>
+  <input type="text" formControlName="Subject">
+  <div class="error" *ngIf="FormSupport.controls['Subject'].invalid && FormSupport.controls['Subject'].touched">err</div>
+
+  <label>Description</label>
+  <input type="text" formControlName="Description">
+  <div class="error" *ngIf="FormSupport.controls['Description'].invalid && FormSupport.controls['Description'].touched">err</div>
+
+  <div class="imgs">
+    <div class="img" *ngFor="let img of imgs">
+      <img src="{{img}}" alt="">
+      <div class="delete" (click)="deleteImg()">x</div>
+    </div>
+  </div>
+  <input type="file" accept="image/*" formControlName="Images" (change)="imgLoad($event)" multiple>
+
+  <button type="submit">submit</button>
+</form>
