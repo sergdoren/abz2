@@ -72,8 +72,8 @@ export class SupportComponent implements OnInit {
     this.imgs.push(imageSrc);
   }
 
-  deleteImg(){
-
+  deleteImg(elem){
+    this.imgs.splice(elem, 1);
   }
 
   submit(){

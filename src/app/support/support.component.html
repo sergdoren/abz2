@@ -1,3 +1,43 @@
+<div class="back__top">
+  <img src="../../images/image-bc-girl.png" class="back__top-img" alt="image-bc-girl">
+</div>
+<header>
+  <img class="header__logo" src="../../images/logo.png" srcset="../../images/image@2x.png 2x">
+  <button class="header__btn-login">Log In Now</button>
+</header>
+<section class="title">
+  <h1 class="title__name">Home of Dentistry</h1>
+  <h2 class="title__text">Denteez was created by dentists for dentistry in order to
+    make the life of everyone involved in dentistry easier.</h2>
+</section>
+<section class="form-container">
+  <form class="form-support">
+    <div class="form__fields">
+        <div class="form__field">
+          <div class="form__field-name"></div>
+          <input type="text" class="form__field-input">
+          <div class="form__field-err"></div>
+        </div>
+    </div>
+    <button class="btn-send">Submit</button>
+  </form>
+</section>
+
+<section class="about">
+
+  <div class="container">
+    <h2 class="about__head">About Denteez</h2>
+    <div class="about__left">
+      Why is it always so difficult to find what you are looking for in dentistry? Whether it is the latest advancement in technology or techniques or simply a review or understanding of the vast amount of products? Perhaps finding someone to just fix your broken equipment or simply hiring new staff or looking for that new job?
+    </div>
+    <div class="about__right">
+      Our mission is to give every dental professional the possibility to discuss and share all aspects of their profession, their practice and their business. We aim to make the world of dentistry easy and accessible, so every dental professional can find what they are looking for quickly and easily all in one place.
+    </div>
+  </div>
+
+</section>
+
+
 <form [formGroup]="FormSupport" novalidate (ngSubmit)="submit()">
 
   <label>EnquiryType</label>
@@ -34,9 +74,9 @@
   <div class="error" *ngIf="FormSupport.controls['Description'].invalid && FormSupport.controls['Description'].touched">err</div>
 
   <div class="imgs">
-    <div class="img" *ngFor="let img of imgs">
+    <div class="img" *ngFor="let img of imgs; let i = index;">
       <img src="{{img}}" alt="">
-      <div class="delete" (click)="deleteImg()">x</div>
+      <div class="delete" (click)="deleteImg(i)">x</div>
     </div>
   </div>
   <input type="file" accept="image/*" formControlName="Images" (change)="imgLoad($event)" multiple>

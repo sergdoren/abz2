@@ -1,4 +1,5 @@
 @import "../../../node_modules/bourbon/app/assets/stylesheets/bourbon"
+@import "../../variables"
 
 input
   border: 1px solid #0002ff
@@ -19,3 +20,114 @@ input
   +position(absolute, 0)
   +size(30px)
   background-color: rebeccapurple
+
+
+/* header */
+header
+  margin-top: 40px
+  +clearfix
+
+.header
+  &__logo
+    +size(130px 40px)
+    float: left
+    margin: 0 0 0 50px
+  &__btn-login
+    float: right
+    margin-right: 40px
+    +btn_green
+    +size(109px 30px)
+    line-height: 30px
+
+
+
+/* Header title */
+
+.title
+  +size(100% auto)
+  font-family: "Proxima Nova Light", sans-serif
+  text-align: center
+  margin: 117px 0 178px 0
+  color: $c_support_head
+  line-height: 30px
+  &__name
+    font-weight: lighter
+    padding-bottom: 17px
+    font-size: 48px
+  &__text
+    font-weight: lighter
+    +size(483px 48px)
+    margin: 0 auto
+    font-size: 19px
+
+
+.back
+  +size(100% auto)
+  background: url("../../images/bg.png")
+  &__top
+    +size(100% 510px)
+    +position(absolute, 0 0 auto 0)
+    overflow: hidden
+    z-index: -1
+    background-color: $bc_placehold
+    &-img
+      width: 100%
+      opacity: .1
+
+
+
+/*  Form */
+
+.form-container
+  +size(100% auto)
+  background: url("../../images/bg.png")
+
+form.form-support
+  +size(760px auto)
+  margin: 0 auto
+  transform: translate(0,-100px)
+
+.form__fields
+  width: 100%
+  padding: 20px
+  border-radius: 5px
+  border: 1px solid $c_grey_border
+  background-color: $c_white
+
+.form__field
+  +size(100% 93px)
+  &-name
+  &-input
+  &-err
+
+
+.btn-send
+  +size(100% 52px)
+  line-height: 52px
+  +btn_green
+  font-size: 16px
+  margin: 20px 0 99px 0
+  +border_bottom
+
+
+/*  about */
+.about
+  font-weight: 100
+  padding: 98px 0 112px 0
+  &__head
+    font-weight: 100
+    padding-bottom: 50px
+    color: $bc_placehold
+    font-size: 30px
+    text-align: center
+  &__left,
+  &__right
+    width: 50%
+    color: $c_sup_text
+    font-size: 16px
+  &__left
+    float: left
+    padding-right: 52px
+  &__right
+    float: right
+    padding-right: 52px
