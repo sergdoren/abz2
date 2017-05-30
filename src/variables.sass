@@ -18,15 +18,23 @@ $c_border: #c8cdd5
 $bc_placehold: #1c2534
 $c_support_head: #f3f4f6
 $c_sup_text: #7c8695
+$c_form_warn: #c1c1c1
+$c_form_load: #c2c2c4
+$c_form_load_bc: #f7f7f7
+$c_warning: #fb6363
+$c_img_close: #65bade
+$c_danger: #d95252
 
 =border_bottom()
   border-bottom: 1px solid $c_grey_border
 
-=border_input()
+=border_input($rad: 5px)
   border: 1px solid $c_border
+  border-radius: $rad
 
 =hover($tr: .3s)
-  +transition($tr)
+  @if($tr != 0)
+    +transition($tr)
   &:hover
     @content
 
@@ -39,3 +47,12 @@ $c_sup_text: #7c8695
     background-color: $c_green_hover
 
 
+=scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%))
+  &::-webkit-scrollbar
+    width:  $size
+    height: $size
+  &::-webkit-scrollbar-thumb
+    background: $foreground-color
+    border-radius: 50px
+  &::-webkit-scrollbar-track
+    background: $background-color

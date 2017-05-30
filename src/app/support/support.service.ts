@@ -16,8 +16,7 @@ export class SupportService {
   getTypes(){
     return this.http
       .get(this.getTypeUrl)
-      .map((res) => res.json().data)
-      .map((item) => item.name);
+      .map((res) => res.json().data);
   }
 
 }

@@ -1,10 +1,6 @@
 @import "../../../node_modules/bourbon/app/assets/stylesheets/bourbon"
 @import "../../variables"
 
-input
-  border: 1px solid #0002ff
-  display: block
-  margin-bottom: 15px
 .imgs
   overflow-x: scroll
   height: 150px
@@ -87,18 +83,130 @@ form.form-support
   margin: 0 auto
   transform: translate(0,-100px)
 
-.form__fields
-  width: 100%
-  padding: 20px
-  border-radius: 5px
-  border: 1px solid $c_grey_border
-  background-color: $c_white
+.form
+  &__fields
+    width: 100%
+    padding: 20px
+    border-radius: 5px
+    border: 1px solid $c_grey_border
+    background-color: $c_white
+  &__field
+    +size(100% auto)
+    font-size: 16px
+    &_err
+      border-color: $c_warning !important
+    &-sm,&-right-sm
+      width: 344px
+      display: inline-block
+    &-sm
+      padding-right: 10px
+    &-right-sm
+      float: right
+    &-name,&-desc
+      height: 21px
+      padding-bottom: 7px
+      color: $bc_placehold
+      display: inline-block
+    &-desc
+      float: right
+    &-input,&-textarea
+      +size(100% 52px)
+      +border_input
+      padding-left: 20px
+      +placeholder
+        color: $c_white
+    &-textarea
+      +size(100% 152px)
+      max-width: 100%
+      max-height: 300px
+      padding-top: 15px
+    &-err
+      height: 20px
+      padding: 4px 0 8px 0
+      color: $c_warning
+      font-size: 12px
+    &-select
+      @extend .form__field-input
+      position: relative
+      &-input
+        height: 100%
 
-.form__field
-  +size(100% 93px)
-  &-name
-  &-input
-  &-err
+  &__option
+    line-height: 52px
+    cursor: pointer
+    padding-left: 20px
+    +hover(0)
+      background-color: $c_support_head
+    &-list
+      +size(calc(100% + 2px) auto)
+      +position(absolute, calc(100% - 5px) auto auto -1px)
+      +border_input()
+      +scrollbars(.5em, $c_form_load)
+      background-color: $c_white
+      overflow: auto
+      max-height: 52px * 3
+      border-top-left-radius: 0
+      border-top-right-radius: 0
+      border-top: 0
+  &__warn
+    +size(100% 31px)
+    color: $c_form_warn
+    font-size: 16px
+    padding-bottom: 17px
+
+
+  &__imgs
+    width: calc(100% + 18px)
+    margin: 0 0 -20px 0
+    +clearfix
+  &__img
+    height: 100%
+    &-box
+      width: 20%
+      float: left
+      position: relative
+      +hover(0)
+        .form__img-delete
+          display: block
+    &-container
+      +size(130px)
+      +border_input(4px)
+      margin: 0 auto 20px 0
+      overflow: hidden
+    &-delete
+      +size(24px)
+      display: none
+      background-color: $c_img_close
+      +position(absolute, -10px 6px auto auto)
+      border-radius: 50%
+      color: $c_white
+      +hover(0.15s)
+        background-color: $c_danger
+  &__upload
+    @extend .form__img-container
+    background-color: $c_form_load_bc
+    &-container
+      @extend .form__img-box
+    &-info
+      +size(100% 128px)
+      padding: 0 16px
+      display: table-cell
+      vertical-align: middle
+      text-align: center
+    &-text
+      color: $c_form_load
+      font-size: 12px
+    &-head
+      color: $c_sup_text
+      font-size: 16px
+    &-err
+      color: $c_warning
+      font-size: 12px
+  &__input-upload
+    +size(100%)
+    +position(absolute, 0 0 0 0)
+    opacity: 0
+    cursor: pointer
 
 
 .btn-send

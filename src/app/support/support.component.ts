@@ -16,15 +16,14 @@ export class SupportComponent implements OnInit {
 
   constructor(private SupService: SupportService) {
     this.FormSupport = new FormGroup({
-      "EnquiryType": new FormControl( "Type", Validators.required),
-      "EnquiryTypeOther": new FormControl( "EnquiryTypeOther"),
-      "Name": new FormControl( "Name", Validators.required),
-      "Email": new FormControl( "Email", [
+      "EnquiryType": new FormControl( "", Validators.required),
+      "Name": new FormControl( "", Validators.required),
+      "Email": new FormControl( "", [
         Validators.required,
         Validators.email
       ]),
-      "Subject": new FormControl( "Subject", Validators.required),
-      "Description": new FormControl( "Description", [
+      "Subject": new FormControl( "", Validators.required),
+      "Description": new FormControl( "", [
         Validators.required,
         Validators.maxLength(1000)
       ]),
@@ -39,24 +38,48 @@ export class SupportComponent implements OnInit {
         (res) => {
           this.types = res.map(item => item.name);
           this.FormSupport.controls['EnquiryType'].updateValueAndValidity('Type');
+          this.setSelectValue(this.types[this.types.length -1]);
         }
       )
   }
 
-  imgs = [];
+  public listShow: boolean = false;
+  public selectValue;
+  public showOther;
+
+  showList(){
+    this.listShow = !this.listShow;
+  }
+
+  setSelectValue(val){
+    this.selectValue = val;
+    this.FormSupport.controls['EnquiryType'].setValue(val);
+    val.toLowerCase() == 'other' ? this.showOther = true : false;
+  }
+
+
+  validate(cntr){
+    return this.FormSupport.controls[cntr].invalid && this.FormSupport.controls[cntr].touched;
+  }
+
+  public imgs = [];
+  public invalid_img: boolean = false;
 
   imgLoad(e){
-    let filesMas = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files;
+    let filesMas = e.dataTransfer ? e.dataTransfer.files : e.target.files;
 
-    console.log(e.target.files);
+    this.invalid_img = false;
+    //
+    // if((this.imgs.length + filesMas.length) >= 7){
+    //   this.invalid_img = true;
+    //   return;
+    // }
 
     for(let key in filesMas){
-
       let file = filesMas[key];
-
-      let pattern = /image-*/;
+      let pattern = /image-*.(png|jpg|jpeg)/;
       if (!file.type.match(pattern)) {
-        alert('invalid format');
+        this.invalid_img = true;
         return;
       }
 

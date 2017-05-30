@@ -11,12 +11,116 @@
     make the life of everyone involved in dentistry easier.</h2>
 </section>
 <section class="form-container">
-  <form class="form-support">
+  <form class="form-support"
+        [formGroup]="FormSupport"
+        novalidate
+        (ngSubmit)="submit()">
     <div class="form__fields">
+        <div class="form__warn">Fields marked “*” are required</div>
         <div class="form__field">
-          <div class="form__field-name"></div>
-          <input type="text" class="form__field-input">
-          <div class="form__field-err"></div>
+          <div class="form__field-name">Enquiry Type *</div>
+          <div class="form__field-select"
+               (click)="showList()">
+            <input type="text"
+                   [value]="selectValue"
+                   readonly
+                   formControlName="EnquiryType"
+                   class="form__field-select-input">
+            <div class="form__option-list" *ngIf="listShow">
+              <div class="form__option"
+                   *ngFor="let type of types"
+                   (click)="setSelectValue(type)">{{type}}
+              </div>
+            </div>
+          </div>
+          <div class="form__field-err">
+            <span *ngIf="false">
+              Select Type
+            </span>
+          </div>
+        </div>
+        <div class="form__field" *ngIf="showOther">
+          <input class="form__field-input" type="text"
+                 formControlName="EnquiryType"
+                 [ngClass]="{'form__field_err':validate('EnquiryType')}">
+          <div class="form__field-err">
+            <span *ngIf="validate('EnquiryType')">Select Type</span>
+          </div>
+        </div>
+        <div class="form__field">
+          <div class="form__field-sm">
+            <div class="form__field-name">Name *</div>
+            <input class="form__field-input" type="text"
+                   formControlName="Name"
+                   [ngClass]="{'form__field_err':validate('Name')}">
+            <div class="form__field-err">
+              <span *ngIf="validate('Name')">The field is empty</span>
+            </div>
+          </div>
+          <div class="form__field-right-sm">
+            <div class="form__field-name">Email *</div>
+            <input class="form__field-input" type="text"
+                   formControlName="Email"
+                   [ngClass]="{'form__field_err':validate('Email')}">
+            <div class="form__field-err">
+              <span *ngIf="validate('Email')">The field is empty</span>
+            </div>
+          </div>
+        </div>
+        <div class="form__field">
+          <div class="form__field-name">Subject *</div>
+          <input class="form__field-input" type="text"
+                 formControlName="Subject"
+                 [ngClass]="{'form__field_err':validate('Subject')}">
+          <div class="form__field-err">
+            <span *ngIf="validate('Subject')">Select Type</span>
+          </div>
+        </div>
+        <div class="form__field">
+          <div class="form__field-name">Description *</div>
+          <div class="form__field-desc">(0/1000)</div>
+          <textarea name="Description *" class="form__field-textarea"
+                    formControlName="Description"
+                    [ngClass]="{'form__field_err':validate('Description')}">
+
+          </textarea>
+          <div class="form__field-err">
+            <span>The field is empty</span>
+          </div>
+        </div>
+        <div class="form__imgs">
+          <div class="form__img-box"
+               *ngFor="let img of imgs; let i = index;">
+            <div class="form__img-container">
+              <img src="{{img}}" alt="" class="form__img">
+            </div>
+            <button class="form__img-delete" (click)="deleteImg(i)">x</button>
+          </div>
+          <div class="form__upload-container">
+            <div class="form__upload">
+              <div class="form__upload-info">
+                <div class="form__upload-head">
+                  Add photo
+                </div>
+                <span class="form__upload-text">
+                  Minimum size of
+                  300x300 jpeg ipg
+                  png 5 MB
+                </span>
+                <div class="form__upload-err"
+                  *ngIf="invalid_img">
+                  The photo does
+                  not meet
+                  the requirements
+                </div>
+              </div>
+              <input type="file"  class="form__input-upload"
+                     formControlName="Images"
+                     (change)="imgLoad($event)"
+                     accept="image/*"
+                     multiple>
+            </div>
+          </div>
         </div>
     </div>
     <button class="btn-send">Submit</button>
@@ -37,49 +141,3 @@
 
 </section>
 
-
-<form [formGroup]="FormSupport" novalidate (ngSubmit)="submit()">
-
-  <label>EnquiryType</label>
-  <select formControlName="EnquiryType" [(ngModel)]="EnquiryType">
-    <option *ngFor="let type of types" [value]="type">{{ type }}</option>
-  </select>
-
-
-  <div class="error" *ngIf="
-      FormSupport.controls['EnquiryType'].invalid
-       && FormSupport.controls['EnquiryType'].touched
-  ">
-    err
-  </div>
-
-  <label>EnquiryTypeOther</label>
-  <input type="text" *ngIf="FormSupport.controls['EnquiryType'].value == 'Other'" formControlName="EnquiryTypeOther">
-  <div class="error" *ngIf="FormSupport.controls['EnquiryTypeOther'].invalid && FormSupport.controls['EnquiryTypeOther'].touched">err</div>
-
-  <label>Name</label>
-  <input type="text" formControlName="Name">
-  <div class="error" *ngIf="FormSupport.controls['Name'].invalid && FormSupport.controls['Name'].touched">err</div>
-
-  <label>Email</label>
-  <input type="text" formControlName="Email">
-  <div class="error" *ngIf="FormSupport.controls['Email'].invalid && FormSupport.controls['Email'].touched">err</div>
-
-  <label>Subject</label>
-  <input type="text" formControlName="Subject">
-  <div class="error" *ngIf="FormSupport.controls['Subject'].invalid && FormSupport.controls['Subject'].touched">err</div>
-
-  <label>Description</label>
-  <input type="text" formControlName="Description">
-  <div class="error" *ngIf="FormSupport.controls['Description'].invalid && FormSupport.controls['Description'].touched">err</div>
-
-  <div class="imgs">
-    <div class="img" *ngFor="let img of imgs; let i = index;">
-      <img src="{{img}}" alt="">
-      <div class="delete" (click)="deleteImg(i)">x</div>
-    </div>
-  </div>
-  <input type="file" accept="image/*" formControlName="Images" (change)="imgLoad($event)" multiple>
-
-  <button type="submit">submit</button>
-</form>
