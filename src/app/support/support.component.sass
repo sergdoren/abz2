@@ -128,8 +128,18 @@ form.form-support
     &-select
       @extend .form__field-input
       position: relative
+      cursor: pointer
+      +after
+        +position(absolute, calc(50% - 4px) 20px auto auto)
+        +size(5px)
+        border: 1px solid $c_arrow
+        border-top: none
+        border-left: none
+        transform: rotate(45deg)
       &-input
-        height: 100%
+        +size(100%)
+        border-radius: 5px
+        cursor: pointer
 
   &__option
     line-height: 52px
@@ -239,3 +249,19 @@ form.form-support
   &__right
     float: right
     padding-right: 52px
+
+footer
+  border-top: 1px solid $c_grey_border
+  padding: 34px 0 29px 0
+.footer
+  &__left
+    display: inline-block
+  &__right
+    float: right
+  &__href,&__text
+    color: $c_aside_foot
+    font-size: 12px
+  &__href
+    padding-right: 20px
+    +hover()
+      color: $c_green_hover

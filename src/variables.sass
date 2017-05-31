@@ -21,6 +21,7 @@ $c_sup_text: #7c8695
 $c_form_warn: #c1c1c1
 $c_form_load: #c2c2c4
 $c_form_load_bc: #f7f7f7
+$c_arrow: #b8babe
 $c_warning: #fb6363
 $c_img_close: #65bade
 $c_danger: #d95252
@@ -36,6 +37,11 @@ $c_danger: #d95252
   @if($tr != 0)
     +transition($tr)
   &:hover
+    @content
+
+=after
+  &::after
+    content: ""
     @content
 
 =btn_green()

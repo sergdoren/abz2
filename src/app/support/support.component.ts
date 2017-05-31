@@ -38,14 +38,16 @@ export class SupportComponent implements OnInit {
         (res) => {
           this.types = res.map(item => item.name);
           this.FormSupport.controls['EnquiryType'].updateValueAndValidity('Type');
-          this.setSelectValue(this.types[this.types.length -1]);
+          this.setSelectValue(this.types[0]);
         }
-      )
+      );
   }
+
+  public lengDesk = '';
 
   public listShow: boolean = false;
   public selectValue;
-  public showOther;
+  public showOther: boolean = false;
 
   showList(){
     this.listShow = !this.listShow;
@@ -53,14 +55,24 @@ export class SupportComponent implements OnInit {
 
   setSelectValue(val){
     this.selectValue = val;
-    this.FormSupport.controls['EnquiryType'].setValue(val);
-    val.toLowerCase() == 'other' ? this.showOther = true : false;
+    let ET = this.FormSupport.controls['EnquiryType'];
+
+    if(val.toLowerCase() == 'other'){
+      this.showOther = true;
+      this.selectValue = 'Other';
+      ET.setValue('');
+      ET.markAsUntouched(true);
+    }else{
+      this.showOther = false;
+      ET.setValue(val);
+    };
   }
 
 
   validate(cntr){
     return this.FormSupport.controls[cntr].invalid && this.FormSupport.controls[cntr].touched;
   }
+
 
   public imgs = [];
   public invalid_img: boolean = false;
@@ -100,6 +112,27 @@ export class SupportComponent implements OnInit {
   }
 
   submit(){
+    let FS = this.FormSupport;
+
+    if(!FS.valid) {
+      for (let key in FS.controls) {
+        FS.controls[key].markAsTouched();
+      }
+      return;
+    }
+
+    let FS_cn = FS.controls;
+
+    let data = {
+      'enquiry_type': FS_cn['EnquiryType'].value,
+      'user_name': FS_cn['Name'].value,
+      'email': FS_cn['Email'].value,
+      'subject': FS_cn['Subject'].value,
+      'description': FS_cn['Description'].value,
+      'file': []
+    };
+
+    this.SupService.sendForm(JSON.stringify(data));
     console.log(this.FormSupport);
     console.log(this.FormSupport.valid);
     console.log(this.FormSupport.controls);

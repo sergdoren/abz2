@@ -2,7 +2,7 @@
   <img src="../../images/image-bc-girl.png" class="back__top-img" alt="image-bc-girl">
 </div>
 <header>
-  <img class="header__logo" src="../../images/logo.png" srcset="../../images/image@2x.png 2x">
+  <img class="header__logo" src="../../images/logo.png" srcset="../../images/logo@2x.png 2x">
   <button class="header__btn-login">Log In Now</button>
 </header>
 <section class="title">
@@ -54,7 +54,7 @@
                    formControlName="Name"
                    [ngClass]="{'form__field_err':validate('Name')}">
             <div class="form__field-err">
-              <span *ngIf="validate('Name')">The field is empty</span>
+              <span *ngIf="validate('Name')">The field is wrong</span>
             </div>
           </div>
           <div class="form__field-right-sm">
@@ -63,7 +63,7 @@
                    formControlName="Email"
                    [ngClass]="{'form__field_err':validate('Email')}">
             <div class="form__field-err">
-              <span *ngIf="validate('Email')">The field is empty</span>
+              <span *ngIf="validate('Email')">The field is wrong</span>
             </div>
           </div>
         </div>
@@ -78,14 +78,15 @@
         </div>
         <div class="form__field">
           <div class="form__field-name">Description *</div>
-          <div class="form__field-desc">(0/1000)</div>
+          <div class="form__field-desc">({{ lengDesk.length }}/1000)</div>
           <textarea name="Description *" class="form__field-textarea"
                     formControlName="Description"
+                    [(ngModel)]="lengDesk"
                     [ngClass]="{'form__field_err':validate('Description')}">
 
           </textarea>
           <div class="form__field-err">
-            <span>The field is empty</span>
+            <span *ngIf="validate('Description')">The field is wrong</span>
           </div>
         </div>
         <div class="form__imgs">
@@ -128,7 +129,6 @@
 </section>
 
 <section class="about">
-
   <div class="container">
     <h2 class="about__head">About Denteez</h2>
     <div class="about__left">
@@ -138,6 +138,18 @@
       Our mission is to give every dental professional the possibility to discuss and share all aspects of their profession, their practice and their business. We aim to make the world of dentistry easy and accessible, so every dental professional can find what they are looking for quickly and easily all in one place.
     </div>
   </div>
-
 </section>
+
+<footer>
+  <div class="container">
+    <div class="footer__left">
+      <div class="footer__text">Denteez Copyright 2015</div>
+    </div>
+    <div class="footer__right">
+      <a href="#" class="footer__href">Support</a>
+      <a href="#" class="footer__href">Privacy Policy</a>
+      <a href="#" class="footer__href">Terms of use</a>
+    </div>
+  </div>
+</footer>
 
