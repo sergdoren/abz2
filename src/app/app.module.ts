@@ -16,7 +16,7 @@ import { MainComponent } from './main/main.component';
 
 const routers = [
   {path: '', component: SupportComponent},
-  {path: 'support', component: SupportComponent},
+  {path: 'support', component: MainComponent},
   {path: '**', component: SupportComponent}
 ];
 

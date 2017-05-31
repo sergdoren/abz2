@@ -60,6 +60,7 @@
           <div class="form__field-right-sm">
             <div class="form__field-name">Email *</div>
             <input class="form__field-input" type="text"
+                   placeholder="Email"
                    formControlName="Email"
                    [ngClass]="{'form__field_err':validate('Email')}">
             <div class="form__field-err">
@@ -118,6 +119,7 @@
               <input type="file"  class="form__input-upload"
                      formControlName="Images"
                      (change)="imgLoad($event)"
+                     (click)="uploadCleanErr()"
                      accept="image/*"
                      multiple>
             </div>

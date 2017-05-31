@@ -11,23 +11,22 @@ import { SupportService } from './support.service';
 })
 export class SupportComponent implements OnInit {
 
-  private FormSupport: FormGroup;
+  public FormSupport: FormGroup;
   public types;
 
   constructor(private SupService: SupportService) {
     this.FormSupport = new FormGroup({
-      "EnquiryType": new FormControl( "", Validators.required),
-      "Name": new FormControl( "", Validators.required),
-      "Email": new FormControl( "", [
+      "EnquiryType": new FormControl( "asdasd", Validators.required),
+      "Name": new FormControl( "asdasd", Validators.required),
+      "Email": new FormControl( "asd@gmail.com", [
         Validators.required,
         Validators.email
       ]),
-      "Subject": new FormControl( "", Validators.required),
-      "Description": new FormControl( "", [
+      "Subject": new FormControl( "asdasd", Validators.required),
+      "Description": new FormControl( "asdasd", [
         Validators.required,
         Validators.maxLength(1000)
-      ]),
-      "Images": new FormControl()
+      ])
     })
   }
 
@@ -75,45 +74,54 @@ export class SupportComponent implements OnInit {
 
 
   public imgs = [];
+  public imgsFile = [];
   public invalid_img: boolean = false;
 
   imgLoad(e){
     let filesMas = e.dataTransfer ? e.dataTransfer.files : e.target.files;
 
     this.invalid_img = false;
-    //
-    // if((this.imgs.length + filesMas.length) >= 7){
-    //   this.invalid_img = true;
-    //   return;
-    // }
 
-    for(let key in filesMas){
+    for(let key in filesMas) {
+      if(key === 'length') return;
       let file = filesMas[key];
       let pattern = /image-*.(png|jpg|jpeg)/;
-      if (!file.type.match(pattern)) {
-        this.invalid_img = true;
-        return;
-      }
 
-      let reader = new FileReader();
-      reader.readAsDataURL(filesMas[key]);
-      reader.onload = this.readLoaded.bind(this);
+      if ((file.size > 5 * Math.pow(10, 6))
+        && !(file.type.match(pattern))) {
+        this.invalid_img = true;
+      } else {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onload = (e) => {
+          let imageSrc = reader.result;
+          let img = new Image();
+          img.src = imageSrc;
+          img.onload = () =>{
+            if((img.width < 300) || (img.height < 300)){
+              this.invalid_img = true;
+              return;
+            }
+            this.imgs.push(imageSrc);
+            this.imgsFile.push(file);
+          };
+        };
+      }
     }
   }
 
-  readLoaded(e) {
-    let reader = e.target;
-    let imageSrc = e.target.result;
-    this.imgs.push(imageSrc);
+  uploadCleanErr(){
+    this.invalid_img = false;
   }
 
   deleteImg(elem){
     this.imgs.splice(elem, 1);
+    this.imgsFile.splice(elem, 1);
   }
 
   submit(){
     let FS = this.FormSupport;
-
     if(!FS.valid) {
       for (let key in FS.controls) {
         FS.controls[key].markAsTouched();
@@ -129,12 +137,21 @@ export class SupportComponent implements OnInit {
       'email': FS_cn['Email'].value,
       'subject': FS_cn['Subject'].value,
       'description': FS_cn['Description'].value,
-      'file': []
+      'file': this.imgsFile
     };
 
-    this.SupService.sendForm(JSON.stringify(data));
-    console.log(this.FormSupport);
-    console.log(this.FormSupport.valid);
-    console.log(this.FormSupport.controls);
+
+    this.SupService
+      .sendForm(JSON.stringify(data))
+      .subscribe(
+        res => {
+                console.log(res.json());
+                alert(res.json().data.message);
+              },
+        err => {
+          console.log(err.json());
+          alert(err.json());
+        }
+      );
   }
 }

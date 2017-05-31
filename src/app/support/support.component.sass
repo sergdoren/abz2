@@ -1,22 +1,6 @@
 @import "../../../node_modules/bourbon/app/assets/stylesheets/bourbon"
 @import "../../variables"
 
-.imgs
-  overflow-x: scroll
-  height: 150px
-
-.img
-  height: 100%
-  display: inline-block
-  position: relative
-  img
-    height: 100%
-
-.delete
-  +position(absolute, 0)
-  +size(30px)
-  background-color: rebeccapurple
-
 
 /* header */
 header
@@ -43,13 +27,14 @@ header
   +size(100% auto)
   font-family: "Proxima Nova Light", sans-serif
   text-align: center
-  margin: 117px 0 178px 0
+  margin: 115px 0 218px 0
   color: $c_support_head
   line-height: 30px
   &__name
+    margin-bottom: 0
     font-weight: lighter
-    padding-bottom: 17px
-    font-size: 48px
+    padding-bottom: 19px
+    font-size: 47px
   &__text
     font-weight: lighter
     +size(483px 48px)
@@ -86,7 +71,7 @@ form.form-support
 .form
   &__fields
     width: 100%
-    padding: 20px
+    padding: 17px 20px 20px 20px
     border-radius: 5px
     border: 1px solid $c_grey_border
     background-color: $c_white
@@ -99,7 +84,7 @@ form.form-support
       width: 344px
       display: inline-block
     &-sm
-      padding-right: 10px
+      padding-right: 1px
     &-right-sm
       float: right
     &-name,&-desc
@@ -107,12 +92,13 @@ form.form-support
       padding-bottom: 7px
       color: $bc_placehold
       display: inline-block
+      transform: translate(-2px, -2px)
     &-desc
       float: right
     &-input,&-textarea
       +size(100% 52px)
       +border_input
-      padding-left: 20px
+      padding-left: 18px
       +placeholder
         color: $c_white
     &-textarea
@@ -122,7 +108,7 @@ form.form-support
       padding-top: 15px
     &-err
       height: 20px
-      padding: 4px 0 8px 0
+      padding: 0 0 8px 0
       color: $c_warning
       font-size: 12px
     &-select
@@ -150,6 +136,7 @@ form.form-support
     &-list
       +size(calc(100% + 2px) auto)
       +position(absolute, calc(100% - 5px) auto auto -1px)
+      z-index: 9
       +border_input()
       +scrollbars(.5em, $c_form_load)
       background-color: $c_white
@@ -159,7 +146,7 @@ form.form-support
       border-top-right-radius: 0
       border-top: 0
   &__warn
-    +size(100% 31px)
+    +size(100% 33px)
     color: $c_form_warn
     font-size: 16px
     padding-bottom: 17px
@@ -167,7 +154,7 @@ form.form-support
 
   &__imgs
     width: calc(100% + 18px)
-    margin: 0 0 -20px 0
+    margin: -5px 0 -20px 0
     +clearfix
   &__img
     height: 100%
@@ -185,18 +172,20 @@ form.form-support
       overflow: hidden
     &-delete
       +size(24px)
+      font-size: 19px
       display: none
       background-color: $c_img_close
       +position(absolute, -10px 6px auto auto)
       border-radius: 50%
       color: $c_white
-      +hover(0.15s)
+      +hover(.15s)
         background-color: $c_danger
   &__upload
     @extend .form__img-container
     background-color: $c_form_load_bc
     &-container
       @extend .form__img-box
+      text-align: center
     &-info
       +size(100% 128px)
       padding: 0 16px
@@ -224,17 +213,17 @@ form.form-support
   line-height: 52px
   +btn_green
   font-size: 16px
-  margin: 20px 0 99px 0
+  margin: 20px 0 0 0
   +border_bottom
 
 
 /*  about */
 .about
   font-weight: 100
-  padding: 98px 0 112px 0
+  padding: 68px 0 108px 0
   &__head
     font-weight: 100
-    padding-bottom: 50px
+    padding-bottom: 15px
     color: $bc_placehold
     font-size: 30px
     text-align: center
@@ -243,16 +232,18 @@ form.form-support
     width: 50%
     color: $c_sup_text
     font-size: 16px
+    line-height: 23px
   &__left
     float: left
     padding-right: 52px
+    padding-left: 65px
   &__right
     float: right
     padding-right: 52px
-
+    padding-left: 40px
 footer
   border-top: 1px solid $c_grey_border
-  padding: 34px 0 29px 0
+  padding: 28px 0 29px 0
 .footer
   &__left
     display: inline-block
@@ -260,7 +251,7 @@ footer
     float: right
   &__href,&__text
     color: $c_aside_foot
-    font-size: 12px
+    font-size: 11px
   &__href
     padding-right: 20px
     +hover()
