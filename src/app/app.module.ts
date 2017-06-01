@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Route } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -15,9 +16,9 @@ import { SupportComponent } from './support/support.component';
 import { MainComponent } from './main/main.component';
 
 const routers = [
-  {path: '', component: SupportComponent},
-  {path: 'support', component: MainComponent},
-  {path: '**', component: SupportComponent}
+  {path: '', component: MainComponent},
+  {path: 'support', component: SupportComponent},
+  {path: '**', component: MainComponent}
 ];
 
 @NgModule({
@@ -40,7 +41,7 @@ const routers = [
     JsonpModule,
     RouterModule.forRoot(routers)
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue : '/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

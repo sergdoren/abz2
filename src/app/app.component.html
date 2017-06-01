@@ -1,1 +1,6 @@
+<nav *ngIf="navShow">
+  <a routerLink="support" routerLinkActive="active">support</a>
+  <a routerLink="" routerLinkActive="active">home</a>
+  <span (click)="close()" class="close">x</span>
+</nav>
 <router-outlet></router-outlet>

@@ -16,14 +16,15 @@ export class SupportComponent implements OnInit {
 
   constructor(private SupService: SupportService) {
     this.FormSupport = new FormGroup({
-      "EnquiryType": new FormControl( "asdasd", Validators.required),
-      "Name": new FormControl( "asdasd", Validators.required),
-      "Email": new FormControl( "asd@gmail.com", [
+      "EnquiryType": new FormControl( "", Validators.required),
+      "Name": new FormControl( "", Validators.required),
+      "Email": new FormControl( "", [
         Validators.required,
-        Validators.email
+        Validators.email,
+        Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
       ]),
-      "Subject": new FormControl( "asdasd", Validators.required),
-      "Description": new FormControl( "asdasd", [
+      "Subject": new FormControl( "", Validators.required),
+      "Description": new FormControl( "", [
         Validators.required,
         Validators.maxLength(1000)
       ])
@@ -150,7 +151,7 @@ export class SupportComponent implements OnInit {
               },
         err => {
           console.log(err.json());
-          alert(err.json());
+          alert('error(img not sends...)');
         }
       );
   }
